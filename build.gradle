@@ -21,6 +21,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
 	implementation 'org.springframework.boot:spring-boot-devtools'
 	implementation 'com.github.vastik:spring-extensions:1.0.12'
+	implementation 'com.github.vastik:spring-auth-jwt:1.0.3'
+	implementation 'com.github.shewaeger:spring-invoker:1.0.3'
 	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'

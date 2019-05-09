@@ -16,7 +16,7 @@ public class UserSpecification implements Specification<User> {
     private final SimpleFilter filter;
 
     @Override
-    public Predicate toPredicate(Root<User> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-        return null;
+    public Predicate toPredicate(Root<User> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+        return cb.like(root.get("login"), filter.anySearch());
     }
 }

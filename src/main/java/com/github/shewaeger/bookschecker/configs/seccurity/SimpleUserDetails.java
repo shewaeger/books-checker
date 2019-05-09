@@ -1,8 +1,6 @@
 package com.github.shewaeger.bookschecker.configs.seccurity;
 
-import com.github.shewaeger.bookschecker.dto.UserWrapper;
-import lombok.Getter;
-import lombok.Setter;
+import com.github.shewaeger.bookschecker.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -11,13 +9,14 @@ import java.util.Collections;
 
 public class SimpleUserDetails implements UserDetails {
 
-    @Setter
-    @Getter
-    private UserWrapper user;
+    private String login;
+    private String password;
+    private Boolean active;
 
-    public SimpleUserDetails(){}
-    public SimpleUserDetails(UserWrapper user){
-        this.user = user;
+    public SimpleUserDetails(User user){
+        this.login = user.getLogin();
+        this.password = user.getPassword();
+        this.active = user.getActive();
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -26,12 +25,12 @@ public class SimpleUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return this.password;
     }
 
     @Override
     public String getUsername() {
-        return user.getLogin();
+        return this.login;
     }
 
     @Override
@@ -41,7 +40,7 @@ public class SimpleUserDetails implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return user.getActive();
+        return active;
     }
 
     @Override
@@ -51,6 +50,6 @@ public class SimpleUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return user.getActive();
+        return this.active;
     }
 }
