@@ -3,13 +3,12 @@ package com.github.shewaeger.bookschecker.entity;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Accessors(chain = true)
+@Table(name = "users")
+@Entity
 public class User {
 
     @Id
